@@ -1,0 +1,62 @@
+---
+name: pr-summary
+description: Create clear, concise pull request summaries from a repo PR template, git context, diffs, commits, and ticket notes. Use when drafting, trimming, or improving a PR description so it is easy for any reviewer to understand.
+---
+
+# PR Summary
+
+Create a pull request description that is easy to read, quick to scan, and useful to any teammate reviewing the change.
+
+## Gather Context
+
+- Find and read the repo's PR template, usually under `.github/`.
+- Inspect git status, branch name, recent commits, and relevant diffs.
+- Read any ticket, story, or local notes the user points to.
+- Reuse 5W1H reasoning from the commit workflow when available.
+
+## Use The Template
+
+Treat the repo PR template as the source of structure.
+
+- Keep headings that help this PR.
+- Remove or leave blank sections that add no reviewer value.
+- Do not invent template sections unless the PR needs them.
+- Preserve required organization from the template when it exists.
+
+## Apply 5W1H Leanly
+
+Use 5W1H to understand the change, but include only useful parts in the PR body.
+
+- Who is affected?
+- What changed?
+- Why does it matter?
+- Where should reviewers look?
+- How was it implemented?
+- When does it matter, only if timing or rollout is relevant?
+
+Prefer a compact explanation over a full narrative.
+
+## Remove Fluff
+
+Remove anything that makes the PR harder to read without helping the reviewer.
+
+- Avoid obvious negatives like "no SQL," "no migrations," or "no feature flags" unless they affect review or release risk.
+- Avoid repeating acceptance criteria or listing every touched file.
+- Avoid vague statements like "updated logic" when a specific plain-English sentence would be clearer.
+- Keep implementation notes short and reviewer-oriented.
+- Include exact test commands actually run.
+- If tests were not run, state that plainly.
+
+## Easy Read Check
+
+Before finishing, reread the draft as someone who did not work on the change.
+
+The PR summary should make it easy to understand:
+
+- What changed?
+- Why it matters?
+- Who or what is affected?
+- Where should reviewers focus?
+- How was it tested?
+
+Trim anything that does not help answer those questions.

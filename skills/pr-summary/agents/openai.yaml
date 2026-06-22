@@ -1,0 +1,4 @@
+interface:
+  display_name: "PR Summary"
+  short_description: "Draft concise, readable PR descriptions"
+  default_prompt: "Use $pr-summary to draft a concise pull request description from the current repo context."
