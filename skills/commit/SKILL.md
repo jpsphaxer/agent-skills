@@ -80,11 +80,18 @@ git commit -m "<subject>" -m "<body>"
 
 Body is always passed as a second `-m` flag — never skip it.
 
-After committing, print the commit hash, subject line, and the GitHub commit URL:
+After committing, print the commit hash and subject line. If HEAD has been pushed to its upstream, also print the GitHub commit URL; otherwise skip the link rather than print one that 404s.
 
 ```bash
-gh browse --commit $(git rev-parse HEAD) --no-browser
+git log -1 --format='%H %s'
+if git merge-base --is-ancestor HEAD @{u} 2>/dev/null; then
+  gh browse --commit=$(git rev-parse HEAD) --no-browser
+else
+  echo "(not pushed yet — no GitHub link)"
+fi
 ```
+
+Note the `=` in `--commit=$(...)`: `--commit` takes an optional value, so `--commit <sha>` (space-separated) gets misparsed as `--commit` plus a stray positional argument and fails.
 
 ## Stop conditions
 
